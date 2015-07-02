@@ -3,8 +3,8 @@
 import angular from 'angular';
 import welcomeDirective from './welcome/welcomeDirective';
 
-angular
+export default angular
   .module('demo', [])
-  .directive('demoWelcome', welcomeDirective);
+  .directive('demoWelcome', welcomeDirective)
+  .name;
 
-module.exports = 'demo';

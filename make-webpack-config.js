@@ -1,19 +1,17 @@
 'use strict';
 
-var path = require("path");
-var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
+import path from "path";
+import webpack from "webpack";
+import ExtractTextPlugin from "extract-text-webpack-plugin";
+import NgAnnotatePlugin from 'ng-annotate-webpack-plugin';
+import StatsPlugin from 'stats-webpack-plugin';
 
 module.exports = function (options) {
-  var entry;
-
-  entry = {
+  const entry = {
     main: "./src/index",
   };
 
-
-  var defaultLoaders = [
+  const defaultLoaders = [
     {test: /\.coffee$/, loaders: ['coffee-redux-loader']},
     {test: /\.json5$/, loaders: ['json5-loader']},
     {test: /\.txt$/, loaders: ['raw-loader']},
@@ -47,25 +45,25 @@ module.exports = function (options) {
     }
   ];
 
-  var stylesheetLoaders = [
+  let stylesheetLoaders = [
     {test: /\.css$/, loaders: ['css-loader']},
     {test: /\.less$/, loaders: ['css-loader!less-loader']},
     {test: /\.styl$/, loaders: ['css-loader!stylus-loader']},
     {test: /\.(scss|sass)$/, loader: "style!css!sass?sourceMap"}
   ];
 
-  var alias = {};
-  var aliasLoader = {};
-  var externals = [];
-  var modulesDirectories = ["web_modules", "node_modules"];
-  var extensions = ["", ".web.js", ".js", ".jsx"];
-  var root = path.join(__dirname, "app");
+  const alias = {};
+  const aliasLoader = {};
+  const externals = [];
+  const modulesDirectories = ["web_modules", "node_modules"];
+  const extensions = ["", ".web.js", ".js", ".jsx"];
+  const root = path.join(__dirname, "app");
   //var publicPath = options.devServer
   //  ? "http://localhost:2992/assets/"
   //  : '/assets/';
-  var publicPath = '/_assets/';
+  const publicPath = '/_assets/';
 
-  var output = {
+  const output = {
     path: path.join(__dirname, 'public', "_assets"),
     publicPath: publicPath,
     filename: "[name].js" + (options.longTermCaching ? "?[chunkhash]" : ""),
@@ -73,20 +71,14 @@ module.exports = function (options) {
     sourceMapFilename: "debugging/[file].map",
     pathinfo: options.debug
   };
-  var excludeFromStats = [
+  const excludeFromStats = [
     /node_modules[\\\/]angular[\\\/]/
   ];
-  var plugins = [
-    function () {
-      this.plugin("done", function (stats) {
-        var jsonStats = stats.toJson({
-          chunkModules: true,
-          exclude: excludeFromStats
-        });
-        jsonStats.publicPath = publicPath;
-        require("fs").writeFileSync(path.join(__dirname, "build", "stats.json"), JSON.stringify(jsonStats));
-      });
-    },
+  const plugins = [
+    new StatsPlugin(path.join(__dirname, "build", "stats.json"), {
+      chunkModules: true,
+      exclude: excludeFromStats
+    }),
     new webpack.PrefetchPlugin("angular")
   ];
 
@@ -130,7 +122,7 @@ module.exports = function (options) {
       new webpack.NoErrorsPlugin()
     );
   }
-  var ignoreLoaders = [];
+  const ignoreLoaders = [];
   return {
     entry: entry,
     output: output,
