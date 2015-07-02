@@ -51,7 +51,7 @@ module.exports = function (options) {
     {test: /\.css$/, loaders: ['css-loader']},
     {test: /\.less$/, loaders: ['css-loader!less-loader']},
     {test: /\.styl$/, loaders: ['css-loader!stylus-loader']},
-    {test: /\.(scss|sass)$/, loaders: ['css-loader!sass-loader']}
+    {test: /\.(scss|sass)$/, loader: "style!css!sass?sourceMap"}
   ];
 
   var alias = {};

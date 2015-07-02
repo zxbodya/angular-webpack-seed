@@ -1,7 +1,7 @@
 'use strict';
 
 import 'angular/angular-csp.css';
-import './index.css';
+import './index.scss';
 
 import angular from 'angular';
 

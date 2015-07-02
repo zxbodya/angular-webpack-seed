@@ -1,6 +1,6 @@
 'use strict';
 
-import './welcome.css';
+import './welcome.scss';
 
 import WelcomeController from './WelcomeController';
 

@@ -4,7 +4,7 @@ Includes following:
 
  - webpack (modules, assets bundling)
  - babel (ES2015 support)
-
+ - ng-annotate
 
 Commands (`npm run <command>`):
 
