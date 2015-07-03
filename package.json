@@ -1,5 +1,5 @@
 {
-  "name": "ngpack",
+  "name": "angular-webpack-seed",
   "version": "0.1.0",
   "description": "angualr project template",
   "main": "index.js",
@@ -7,7 +7,8 @@
     "build": "babel-node -- node_modules/.bin/webpack --config webpack-production.config.js --progress --profile --colors",
     "build-dev": "babel-node -- node_modules/.bin/webpack --config webpack.config.js --progress --profile --colors",
     "dev-server": "babel-node -- node_modules/.bin/webpack-dev-server --config webpack-dev-server.config.js --progress --colors --port 2992 --inline --content-base public",
-    "test": "babel-node -- node_modules/.bin/karma start"
+    "test": "babel-node -- node_modules/.bin/karma start",
+    "lint": "eslint ./src/"
   },
   "author": "Bogdan Savluk <savluk.bogdan@gmail.com>",
   "license": "MIT",
@@ -21,6 +22,7 @@
     "babel-loader": "^5.2.2",
     "babel-runtime": "^5.6.15",
     "css-loader": "^0.15.1",
+    "eslint": "^0.24.0",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "html-loader": "^0.3.0",

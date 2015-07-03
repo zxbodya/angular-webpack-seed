@@ -1,4 +1,4 @@
-import makeWebpackConfig from "./make-webpack-config";
+import makeWebpackConfig from './make-webpack-config';
 
 export default makeWebpackConfig({
   //commonsChunk: true,

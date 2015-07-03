@@ -20,8 +20,8 @@ describe('demoWelcome directive', ()=> {
   }));
 
   it('Replaces the element with the appropriate content', function () {
-    var element = $compile("<div demo-welcome=''></div>")($rootScope);
+    var element = $compile('<div demo-welcome=""></div>')($rootScope);
     $rootScope.$digest();
-    expect(element.html()).toContain("Hello, this is demo page");
+    expect(element.html()).toContain('Hello, this is demo page');
   });
 });

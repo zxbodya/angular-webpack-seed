@@ -1,7 +1,7 @@
-import makeWebpackConfig from "./make-webpack-config";
+import makeWebpackConfig from './make-webpack-config';
 
 export default makeWebpackConfig({
-  devtool: "source-map",
+  devtool: 'source-map',
   separateStylesheet: true,
   debug: true
 });

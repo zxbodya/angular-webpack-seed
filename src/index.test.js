@@ -1,4 +1,4 @@
 'use strict';
 
-var testsContext = require.context(".", true, /\.test$/);
+let testsContext = require.context('.', true, /\.test$/);
 testsContext.keys().forEach(testsContext);

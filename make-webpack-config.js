@@ -1,14 +1,14 @@
 'use strict';
 
-import path from "path";
-import webpack from "webpack";
-import ExtractTextPlugin from "extract-text-webpack-plugin";
+import path from 'path';
+import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import NgAnnotatePlugin from 'ng-annotate-webpack-plugin';
 import StatsPlugin from 'stats-webpack-plugin';
 
 module.exports = function (options) {
   const entry = {
-    main: "./src/index",
+    main: './src/index'
   };
 
   const defaultLoaders = [
@@ -20,28 +20,28 @@ module.exports = function (options) {
     {test: /\.(ttf|eot)$/, loaders: ['file-loader']},
     {test: /\.(wav|mp3)$/, loaders: ['file-loader']},
     {test: /\.html$/, loaders: ['html-loader']},
-    {test: /\.(md|markdown)$/, loaders: ["html-loader", "markdown-loader"]},
+    {test: /\.(md|markdown)$/, loaders: ['html-loader', 'markdown-loader']},
 
     //font awesome
     {
       test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-      loader: "url?limit=10000&mimetype=application/font-woff"
+      loader: 'url?limit=10000&mimetype=application/font-woff'
     },
     {
       test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-      loader: "url?limit=10000&mimetype=application/font-woff"
+      loader: 'url?limit=10000&mimetype=application/font-woff'
     },
     {
       test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-      loader: "url?limit=10000&mimetype=application/octet-stream"
+      loader: 'url?limit=10000&mimetype=application/octet-stream'
     },
     {
       test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-      loader: "file"
+      loader: 'file'
     },
     {
       test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-      loader: "url?limit=10000&mimetype=image/svg+xml"
+      loader: 'url?limit=10000&mimetype=image/svg+xml'
     }
   ];
 
@@ -49,52 +49,52 @@ module.exports = function (options) {
     {test: /\.css$/, loaders: ['css-loader']},
     {test: /\.less$/, loaders: ['css-loader!less-loader']},
     {test: /\.styl$/, loaders: ['css-loader!stylus-loader']},
-    {test: /\.(scss|sass)$/, loader: "style!css!sass?sourceMap"}
+    {test: /\.(scss|sass)$/, loader: 'style!css!sass?sourceMap'}
   ];
 
   const alias = {};
   const aliasLoader = {};
   const externals = [];
-  const modulesDirectories = ["web_modules", "node_modules"];
-  const extensions = ["", ".web.js", ".js", ".jsx"];
-  const root = path.join(__dirname, "app");
+  const modulesDirectories = ['web_modules', 'node_modules'];
+  const extensions = ['', '.web.js', '.js', '.jsx'];
+  const root = path.join(__dirname, 'app');
   //var publicPath = options.devServer
-  //  ? "http://localhost:2992/assets/"
+  //  ? 'http://localhost:2992/assets/'
   //  : '/assets/';
   const publicPath = '/_assets/';
 
   const output = {
-    path: path.join(__dirname, 'public', "_assets"),
+    path: path.join(__dirname, 'public', '_assets'),
     publicPath: publicPath,
-    filename: "[name].js" + (options.longTermCaching ? "?[chunkhash]" : ""),
-    chunkFilename: (options.devServer ? "[id].js" : "[name].js") + (options.longTermCaching ? "?[chunkhash]" : ""),
-    sourceMapFilename: "debugging/[file].map",
+    filename: '[name].js' + (options.longTermCaching ? '?[chunkhash]' : ''),
+    chunkFilename: (options.devServer ? '[id].js' : '[name].js') + (options.longTermCaching ? '?[chunkhash]' : ''),
+    sourceMapFilename: 'debugging/[file].map',
     pathinfo: options.debug
   };
   const excludeFromStats = [
     /node_modules[\\\/]angular[\\\/]/
   ];
   const plugins = [
-    new StatsPlugin(path.join(__dirname, "build", "stats.json"), {
+    new StatsPlugin(path.join(__dirname, 'build', 'stats.json'), {
       chunkModules: true,
       exclude: excludeFromStats
     }),
-    new webpack.PrefetchPlugin("angular")
+    new webpack.PrefetchPlugin('angular')
   ];
 
   if (options.commonsChunk) {
-    plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js" + (options.longTermCaching ? "?[chunkhash]" : "")));
+    plugins.push(new webpack.optimize.CommonsChunkPlugin('commons', 'commons.js' + (options.longTermCaching ? '?[chunkhash]' : '')));
   }
 
 
   stylesheetLoaders = stylesheetLoaders.map(function (loader) {
     if (Array.isArray(loader.loaders)) {
-      loader.loaders = loader.loaders.join("!");
+      loader.loaders = loader.loaders.join('!');
     }
     if (options.separateStylesheet) {
-      loader.loaders = ExtractTextPlugin.extract("style-loader", loader.loaders);
+      loader.loaders = ExtractTextPlugin.extract('style-loader', loader.loaders);
     } else {
-      loader.loaders = "style-loader!" + loader.loaders;
+      loader.loaders = 'style-loader!' + loader.loaders;
     }
     loader.loaders = loader.loaders.split('!');
     return loader;
@@ -106,7 +106,7 @@ module.exports = function (options) {
   if (options.minimize) {
     plugins.push(
       new NgAnnotatePlugin({
-        add: true,
+        add: true
       }),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
@@ -115,8 +115,8 @@ module.exports = function (options) {
       }),
       new webpack.optimize.DedupePlugin(),
       new webpack.DefinePlugin({
-        "process.env": {
-          NODE_ENV: JSON.stringify("production")
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
         }
       }),
       new webpack.NoErrorsPlugin()
@@ -142,7 +142,7 @@ module.exports = function (options) {
     devtool: options.devtool,
     debug: options.debug,
     resolveLoader: {
-      root: path.join(__dirname, "node_modules"),
+      root: path.join(__dirname, 'node_modules'),
       alias: aliasLoader
     },
     externals: externals,

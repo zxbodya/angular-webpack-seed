@@ -1,0 +1,68 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  },
+  "ecmaFeatures": {
+    // enable arrow functions
+    "arrowFunctions": true,
+    // enable binary literals
+    "binaryLiterals": true,
+    // enable let and const (aka block bindings)
+    "blockBindings": true,
+    // enable classes
+    "classes": true,
+    // enable default function parameters
+    "defaultParams": true,
+    // enable destructuring
+    "destructuring": true,
+    // enable for-of loops
+    "forOf": true,
+    // enable generators
+    "generators": true,
+    // enable modules and global strict mode
+    "modules": true,
+    // enable computed object literal property names
+    "objectLiteralComputedProperties": true,
+    // enable duplicate object literal properties in strict mode
+    "objectLiteralDuplicateProperties": true,
+    // enable object literal shorthand methods
+    "objectLiteralShorthandMethods": true,
+    // enable object literal shorthand properties
+    "objectLiteralShorthandProperties": true,
+    // enable octal literals
+    "octalLiterals": true,
+    // enable the regular expression u flag
+    "regexUFlag": true,
+    // enable the regular expression y flag
+    "regexYFlag": true,
+    // enable the rest parameters
+    "restParams": true,
+    // enable the spread operator
+    "spread": true,
+    // enable super references inside of functions
+    "superInFunctions": true,
+    // enable template strings
+    "templateStrings": true,
+    // enable code point escapes
+    "unicodeCodePointEscapes": true,
+    // allow return statements in the global scope
+    "globalReturn": true,
+    // enable JSX
+    "jsx": true
+  },
+  "rules": {
+    "quotes": [
+      2,
+      "single"
+    ],
+    "no-underscore-dangle": 1,
+    "dot-notation": 1,
+    "new-cap": 1,
+    "no-shadow": 1,
+    "no-process-exit": 1
+  },
+  "plugins": [
+  ]
+}

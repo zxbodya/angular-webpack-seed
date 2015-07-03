@@ -1,11 +1,11 @@
 'use strict';
 // Karma configuration
 // Generated on Mon Mar 23 2015 07:31:02 GMT+0200 (EET)
-import makeWebpackConfig from "./make-webpack-config";
+import makeWebpackConfig from './make-webpack-config';
 
 export default function (config) {
   let webpackConfig = makeWebpackConfig({
-    devtool: "source-map",
+    devtool: 'source-map',
     separateStylesheet: true,
     debug: true
   });
@@ -29,8 +29,7 @@ export default function (config) {
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
@@ -88,5 +87,5 @@ export default function (config) {
       require('karma-webpack')
     ]
   });
-};
+}
 
