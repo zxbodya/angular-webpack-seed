@@ -1,11 +1,5 @@
 # TODO
 
-1. Unit testing
-   - Karma/jasmine configuration
-   - Test examples
-   - Mocks
-   - (??) Test coverage
-   - (??) Mocha/Chai 
 2. ESlint
    - config
    - lint command

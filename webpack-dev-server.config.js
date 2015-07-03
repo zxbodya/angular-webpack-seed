@@ -1,6 +1,6 @@
-import makeConfig from "./make-webpack-config";
+import makeWebpackConfig from "./make-webpack-config";
 
-export default makeConfig({
+export default makeWebpackConfig({
   devServer: true,
   devtool: "inline-source-map",
   debug: true
