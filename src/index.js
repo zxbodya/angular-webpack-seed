@@ -1,5 +1,3 @@
-'use strict';
-
 import 'angular/angular-csp.css';
 import './index.scss';
 

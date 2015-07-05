@@ -1,5 +1,3 @@
-'use strict';
-
 import './welcome.scss';
 
 import WelcomeController from './WelcomeController';
