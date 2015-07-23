@@ -1,4 +1,6 @@
-# Modern app seed for legacy Angular apps (1.x)
+# Modern app seed for legacy Angular apps (1.x) 
+
+[![Build Status](https://travis-ci.org/zxbodya/angular-webpack-seed.svg?branch=master)](https://travis-ci.org/zxbodya/reactive-widgets)
 
 It is quite opinionated, so feel free - to make suggestions to improve it.
 
