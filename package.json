@@ -4,10 +4,10 @@
   "description": "angualr project template",
   "main": "index.js",
   "scripts": {
-    "build": "babel-node -- node_modules/.bin/webpack --config webpack-production.config.js --progress --profile --colors",
-    "build-dev": "babel-node -- node_modules/.bin/webpack --config webpack.config.js --progress --profile --colors",
-    "dev-server": "babel-node -- node_modules/.bin/webpack-dev-server --config webpack-dev-server.config.js --progress --colors --port 2992 --inline --content-base public",
-    "test": "babel-node -- node_modules/.bin/karma start",
+    "build": "babel-node -- ./node_modules/webpack/bin/webpack.js  --config webpack-production.config.js --progress --profile --colors",
+    "build-dev": "babel-node -- ./node_modules/webpack/bin/webpack.js --config webpack.config.js --progress --profile --colors",
+    "dev-server": "babel-node -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack-dev-server.config.js --progress --colors --port 2992 --inline --content-base public",
+    "test": "babel-node -- ./node_modules/karma-cli/bin/karma start",
     "lint": "eslint ./src/"
   },
   "author": "Bogdan Savluk <savluk.bogdan@gmail.com>",
