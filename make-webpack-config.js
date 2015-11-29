@@ -4,7 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import NgAnnotatePlugin from 'ng-annotate-webpack-plugin';
 import StatsPlugin from 'stats-webpack-plugin';
 
-module.exports = function (options) {
+export default function (options) {
   const entry = {
     main: './src/index'
   };
@@ -136,6 +136,9 @@ module.exports = function (options) {
         ])
         .concat(defaultLoaders)
         .concat(stylesheetLoaders)
+    },
+    postcss() {
+      return [require('autoprefixer')({browsers: ['last 1 version']})];
     },
     devtool: options.devtool,
     debug: options.debug,
