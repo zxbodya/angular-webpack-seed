@@ -7,14 +7,10 @@ module.exports = function(config) {
   let webpackConfig = makeWebpackConfig({
     devtool: 'source-map',
     separateStylesheet: true,
-    debug: true
+    debug: true,
+    cover: true
   });
 
-  webpackConfig.module.postLoaders = [{
-    test: /\.js$/,
-    exclude: /(\.test.js$|node_modules\/)/,
-    loader: 'istanbul-instrumenter',
-  }];
 
 
   config.set({

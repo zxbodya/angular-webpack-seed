@@ -4,7 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import NgAnnotatePlugin from 'ng-annotate-webpack-plugin';
 import StatsPlugin from 'stats-webpack-plugin';
 
-export default function (options) {
+export default function(options) {
   const entry = {
     main: './src/index'
   };
@@ -85,7 +85,7 @@ export default function (options) {
   }
 
 
-  stylesheetLoaders = stylesheetLoaders.map(function (loader) {
+  stylesheetLoaders = stylesheetLoaders.map(function(loader) {
     if (Array.isArray(loader.loaders)) {
       loader.loaders = loader.loaders.join('!');
     }
@@ -121,21 +121,45 @@ export default function (options) {
     );
   }
   const ignoreLoaders = [];
+
+  let jsLoaders;
+  let postLoaders = [];
+
+  if (options.cover) {
+    jsLoaders = [
+      {
+        test: /\.jsx?$/,
+        loaders: ['babel?presets[]=es2015&plugins[]=transform-runtime'],
+        exclude: /node_modules/
+      }
+    ];
+    postLoaders = [
+      {
+        test: /\.js$/,
+        exclude: /(\.test.js$|node_modules\/)/,
+        loader: 'istanbul-instrumenter',
+      }
+    ]
+  } else {
+    jsLoaders = [
+      {
+        test: /\.jsx?$/,
+        loaders: ['babel?presets[]=es2015&plugins[]=transform-runtime'],
+        exclude: /node_modules/
+      }
+    ];
+  }
+
   return {
     entry: entry,
     output: output,
     target: 'web',
     module: {
       loaders: ignoreLoaders
-        .concat([
-          {
-            test: /\.jsx?$/,
-            loaders: ['babel?presets[]=es2015&plugins[]=transform-runtime'],
-            exclude: /node_modules/
-          }
-        ])
+        .concat(jsLoaders)
         .concat(defaultLoaders)
-        .concat(stylesheetLoaders)
+        .concat(stylesheetLoaders),
+      postLoaders,
     },
     postcss() {
       return [require('autoprefixer')({browsers: ['last 1 version']})];
