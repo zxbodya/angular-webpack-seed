@@ -127,24 +127,31 @@ export default function(options) {
 
   if (options.cover) {
     jsLoaders = [
+      // transpile all files except testing sources with babel as usual
+      {
+        test: /\.test\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+      },
+      // transpile and instrument only testing sources with babel-istanbul
       {
         test: /\.jsx?$/,
-        loaders: ['babel?presets[]=es2015&plugins[]=transform-runtime'],
-        exclude: /node_modules/
+        exclude: [
+          /node_modules/,
+          /\.test\./,
+        ],
+        loader: 'babel-istanbul',
+        query: {
+          //cacheDirectory: true
+        }
       }
     ];
-    postLoaders = [
-      {
-        test: /\.js$/,
-        exclude: /(\.test.js$|node_modules\/)/,
-        loader: 'istanbul-instrumenter',
-      }
-    ]
+
   } else {
     jsLoaders = [
       {
         test: /\.jsx?$/,
-        loaders: ['babel?presets[]=es2015&plugins[]=transform-runtime'],
+        loaders: 'babel',
         exclude: /node_modules/
       }
     ];
