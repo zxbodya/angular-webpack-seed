@@ -1,9 +1,12 @@
 import makeWebpackConfig from './make-webpack-config';
 
-export default makeWebpackConfig({
+const config = makeWebpackConfig({
   //commonsChunk: true,
   longTermCaching: true,
   separateStylesheet: true,
   minimize: true,
   devtool: false
 });
+
+export default config;
+module.exports = config;

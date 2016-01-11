@@ -130,7 +130,7 @@ export default function (options) {
         .concat([
           {
             test: /\.jsx?$/,
-            loaders: ['babel?optional[]=runtime'],
+            loaders: ['babel?presets[]=es2015&plugins[]=transform-runtime'],
             exclude: /node_modules/
           }
         ])

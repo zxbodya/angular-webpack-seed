@@ -2,7 +2,8 @@
 // Generated on Mon Mar 23 2015 07:31:02 GMT+0200 (EET)
 import makeWebpackConfig from './make-webpack-config';
 
-export default function (config) {
+module.exports = function(config) {
+
   let webpackConfig = makeWebpackConfig({
     devtool: 'source-map',
     separateStylesheet: true,
