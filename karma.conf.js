@@ -2,11 +2,13 @@
 // Generated on Mon Mar 23 2015 07:31:02 GMT+0200 (EET)
 import makeWebpackConfig from './make-webpack-config';
 
-export default function (config) {
+module.exports = function(config) {
+
   let webpackConfig = makeWebpackConfig({
     devtool: 'source-map',
     separateStylesheet: true,
-    debug: true
+    debug: true,
+    cover: process.env.COVERAGE
   });
 
 
@@ -41,8 +43,30 @@ export default function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: process.env.COVERAGE
+      ? ['progress', 'coverage']
+      : ['progress'],
 
+
+    // coverageReporter: {
+    //   type: 'text',
+    //   dir: 'coverage/',
+    // },
+    coverageReporter: {
+      reporters: [
+        {
+          type: 'text-summary',
+        },
+        {
+          type: 'lcov',
+          dir: 'coverage/',
+        },
+        {
+          type: 'json',
+          dir: 'coverage/',
+        }
+      ],
+    },
 
     // web server port
     port: 9876,
@@ -84,7 +108,11 @@ export default function (config) {
       require('karma-jasmine'),
       require('karma-sourcemap-loader'),
       require('karma-webpack')
-    ]
+    ].concat(
+      process.env.COVERAGE
+        ? [require('karma-coverage')]
+        : []
+    ),
   });
-}
+};
 

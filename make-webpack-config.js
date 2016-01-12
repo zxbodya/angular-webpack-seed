@@ -4,7 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import NgAnnotatePlugin from 'ng-annotate-webpack-plugin';
 import StatsPlugin from 'stats-webpack-plugin';
 
-export default function (options) {
+export default function(options) {
   const entry = {
     main: './src/index'
   };
@@ -85,7 +85,7 @@ export default function (options) {
   }
 
 
-  stylesheetLoaders = stylesheetLoaders.map(function (loader) {
+  stylesheetLoaders = stylesheetLoaders.map(function(loader) {
     if (Array.isArray(loader.loaders)) {
       loader.loaders = loader.loaders.join('!');
     }
@@ -121,21 +121,50 @@ export default function (options) {
     );
   }
   const ignoreLoaders = [];
+
+  let jsLoaders;
+
+  if (options.cover) {
+    jsLoaders = [
+      // transpile all files except testing sources with babel as usual
+      {
+        test: /\.test\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+      },
+      // transpile and instrument only testing sources with babel-istanbul
+      {
+        test: /\.jsx?$/,
+        exclude: [
+          /node_modules/,
+          /\.test\./,
+        ],
+        loader: 'babel-istanbul',
+        query: {
+          //cacheDirectory: true
+        }
+      }
+    ];
+
+  } else {
+    jsLoaders = [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel',
+        exclude: /node_modules/
+      }
+    ];
+  }
+
   return {
     entry: entry,
     output: output,
     target: 'web',
     module: {
       loaders: ignoreLoaders
-        .concat([
-          {
-            test: /\.jsx?$/,
-            loaders: ['babel?optional[]=runtime'],
-            exclude: /node_modules/
-          }
-        ])
+        .concat(jsLoaders)
         .concat(defaultLoaders)
-        .concat(stylesheetLoaders)
+        .concat(stylesheetLoaders),
     },
     postcss() {
       return [require('autoprefixer')({browsers: ['last 1 version']})];
