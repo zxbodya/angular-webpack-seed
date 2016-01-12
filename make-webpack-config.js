@@ -123,7 +123,6 @@ export default function(options) {
   const ignoreLoaders = [];
 
   let jsLoaders;
-  let postLoaders = [];
 
   if (options.cover) {
     jsLoaders = [
@@ -151,7 +150,7 @@ export default function(options) {
     jsLoaders = [
       {
         test: /\.jsx?$/,
-        loaders: 'babel',
+        loader: 'babel',
         exclude: /node_modules/
       }
     ];
@@ -166,7 +165,6 @@ export default function(options) {
         .concat(jsLoaders)
         .concat(defaultLoaders)
         .concat(stylesheetLoaders),
-      postLoaders,
     },
     postcss() {
       return [require('autoprefixer')({browsers: ['last 1 version']})];

@@ -8,6 +8,7 @@
     "build-dev": "babel-node --presets es2015 -- ./node_modules/webpack/bin/webpack.js --config webpack.config.js --progress --profile --colors",
     "dev-server": "babel-node --presets es2015 -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack-dev-server.config.js --progress --colors --port 2992 --inline --content-base public",
     "test": "babel-node --presets es2015 -- ./node_modules/karma-cli/bin/karma start",
+    "cover": "rimraf coverage && COVERAGE=1 babel-node --presets es2015 -- ./node_modules/karma-cli/bin/karma start",
     "lint": "eslint ./src/"
   },
   "author": "Bogdan Savluk <savluk.bogdan@gmail.com>",
@@ -46,6 +47,7 @@
     "node-libs-browser": "^0.5.2",
     "node-sass": "^3.2.0",
     "postcss-loader": "^0.8.0",
+    "rimraf": "^2.5.0",
     "sass-loader": "^3.0.0",
     "stats-webpack-plugin": "^0.2.2",
     "style-loader": "^0.13.0",

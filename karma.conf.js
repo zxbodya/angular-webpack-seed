@@ -8,9 +8,8 @@ module.exports = function(config) {
     devtool: 'source-map',
     separateStylesheet: true,
     debug: true,
-    cover: true
+    cover: process.env.COVERAGE
   });
-
 
 
   config.set({
@@ -44,10 +43,9 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: [
-      'progress',
-      'coverage'
-    ],
+    reporters: process.env.COVERAGE
+      ? ['progress', 'coverage']
+      : ['progress'],
 
 
     // coverageReporter: {
@@ -61,6 +59,10 @@ module.exports = function(config) {
         },
         {
           type: 'lcov',
+          dir: 'coverage/',
+        },
+        {
+          type: 'json',
           dir: 'coverage/',
         }
       ],
@@ -105,9 +107,12 @@ module.exports = function(config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine'),
       require('karma-sourcemap-loader'),
-      require('karma-webpack'),
-      require('karma-coverage')
-    ],
+      require('karma-webpack')
+    ].concat(
+      process.env.COVERAGE
+        ? [require('karma-coverage')]
+        : []
+    ),
   });
-}
+};
 
