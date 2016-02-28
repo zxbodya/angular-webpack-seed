@@ -31,7 +31,7 @@
     "codecov.io": "^0.1.6",
     "coveralls": "^2.11.6",
     "css-loader": "^0.23.0",
-    "eslint": "^1.6.0",
+    "eslint": "^2.2.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.4",
     "html-loader": "^0.4.0",
