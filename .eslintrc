@@ -8,17 +8,5 @@
   "parserOptions": {
     "sourceType": "module"
   },
-  "rules": {
-    "quotes": [
-      2,
-      "single"
-    ],
-    "no-underscore-dangle": 1,
-    "dot-notation": 1,
-    "new-cap": 1,
-    "no-shadow": 1,
-    "no-process-exit": 1
-  },
-  "plugins": [
-  ]
+  "extends": "airbnb/base"
 }

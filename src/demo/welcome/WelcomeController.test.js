@@ -1,17 +1,17 @@
 import angular from 'angular';
 import 'angular-mocks';
 
-let {module, inject} = angular.mock;
+const { module, inject } = angular.mock;
 
 import demoModule from '../demoModule.js';
 import WelcomeController from './WelcomeController';
 
-describe('WelcomeController', ()=> {
+describe('WelcomeController', () => {
   beforeEach(module(demoModule));
 
   let $controller;
 
-  beforeEach(inject(function (_$controller_) {
+  beforeEach(inject((_$controller_) => {
     $controller = _$controller_;
   }));
 
