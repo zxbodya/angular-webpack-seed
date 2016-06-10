@@ -15,6 +15,8 @@ Includes following:
 
 ### Usage
 
+Note: NodeJS 6+ is required.
+
 1. Install dependencies `npm i`
 2. Start dev server `npm run dev-server` open [http://localhost:2992](http://localhost:2992)
 3. Lint your code `npm run lint`

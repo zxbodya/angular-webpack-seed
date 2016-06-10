@@ -1,12 +1,11 @@
-import makeWebpackConfig from './make-webpack-config';
+const makeWebpackConfig = require('./make-webpack-config');
 
 const config = makeWebpackConfig({
-  //commonsChunk: true,
+  // commonsChunk: true,
   longTermCaching: true,
   separateStylesheet: true,
   minimize: true,
-  devtool: false
+  devtool: false,
 });
 
-export default config;
 module.exports = config;

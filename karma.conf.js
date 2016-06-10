@@ -1,16 +1,14 @@
 // Karma configuration
 // Generated on Mon Mar 23 2015 07:31:02 GMT+0200 (EET)
-import makeWebpackConfig from './make-webpack-config';
+const makeWebpackConfig = require('./make-webpack-config');
 
-module.exports = function(config) {
-
-  let webpackConfig = makeWebpackConfig({
+module.exports = function (config) {
+  const webpackConfig = makeWebpackConfig({
     devtool: 'source-map',
     separateStylesheet: true,
     debug: true,
-    cover: process.env.COVERAGE
+    cover: process.env.COVERAGE,
   });
-
 
   config.set({
 
@@ -25,7 +23,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/index.test.js'
+      'src/index.test.js',
     ],
 
 
@@ -36,7 +34,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/**/*.test.js': ['webpack', 'sourcemap']
+      'src/**/*.test.js': ['webpack', 'sourcemap'],
     },
 
 
@@ -64,7 +62,7 @@ module.exports = function(config) {
         {
           type: 'json',
           dir: 'coverage/',
-        }
+        },
       ],
     },
 
@@ -99,7 +97,7 @@ module.exports = function(config) {
     webpackMiddleware: {
       // webpack-dev-middleware configuration
       // i. e.
-      noInfo: true
+      noInfo: true,
     },
 
     plugins: [
@@ -107,7 +105,7 @@ module.exports = function(config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine'),
       require('karma-sourcemap-loader'),
-      require('karma-webpack')
+      require('karma-webpack'),
     ].concat(
       process.env.COVERAGE
         ? [require('karma-coverage')]
@@ -115,4 +113,3 @@ module.exports = function(config) {
     ),
   });
 };
-
