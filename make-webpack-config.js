@@ -90,7 +90,7 @@ module.exports = function (options) {
     new webpack.PrefetchPlugin('angular'),
   ];
 
-  if (options.commonsChunk) {
+  if (options.commonsChunk && !options.cover) {
     plugins.push(
       new webpack.optimize.CommonsChunkPlugin(
         'commons',
