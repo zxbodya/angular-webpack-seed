@@ -1,7 +1,7 @@
+import angular from 'angular';
+
 import 'angular/angular-csp.css';
 import './index.scss';
-
-import angular from 'angular';
 
 import demoModule from './demo/demoModule';
 

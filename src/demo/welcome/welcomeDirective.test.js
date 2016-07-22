@@ -1,9 +1,9 @@
 import angular from 'angular';
 import 'angular-mocks';
 
-const { module, inject } = angular.mock;
-
 import demoModule from '../demoModule.js';
+
+const { module, inject } = angular.mock;
 
 describe('demoWelcome directive', () => {
   let $compile;

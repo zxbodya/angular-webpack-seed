@@ -1,10 +1,10 @@
 import angular from 'angular';
 import 'angular-mocks';
 
-const { module, inject } = angular.mock;
-
 import demoModule from '../demoModule.js';
 import WelcomeController from './WelcomeController';
+
+const { module, inject } = angular.mock;
 
 describe('WelcomeController', () => {
   beforeEach(module(demoModule));

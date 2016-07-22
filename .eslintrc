@@ -17,6 +17,7 @@
     "new-cap": 0,
     "react/prefer-stateless-function": 0,
     "no-param-reassign": 1,
-    "no-nested-ternary": 1
+    "no-nested-ternary": 1,
+    "import/no-extraneous-dependencies": 0
   }
 }
