@@ -13,7 +13,7 @@ module.exports = function (options) {
     { test: /\.coffee$/, loaders: ['coffee-redux-loader'] },
     { test: /\.json5$/, loaders: ['json5-loader'] },
     { test: /\.txt$/, loaders: ['raw-loader'] },
-    { test: /\.(png|jpg|jpeg|gif|svg)$/, loaders: ['url-loader?limit=10000'] },
+    { test: /\.(png|jpg|jpeg|gif)$/, loaders: ['url-loader?limit=10000'] },
     // {test: /\.(woff|woff2)$/, loaders: ['url-loader?limit=100000']},
     // {test: /\.(ttf|eot)$/, loaders: ['file-loader']},
     { test: /\.(wav|mp3)$/, loaders: ['file-loader'] },
