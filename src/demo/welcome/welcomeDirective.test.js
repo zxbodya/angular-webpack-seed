@@ -1,7 +1,7 @@
 import angular from 'angular';
 import 'angular-mocks';
 
-import demoModule from '../demoModule.js';
+import demoModule from '../demoModule';
 
 const { module, inject } = angular.mock;
 
