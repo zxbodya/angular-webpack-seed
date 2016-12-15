@@ -34,7 +34,7 @@ At first be sure that you are familiar with ES2015, some useful materials:
  - [tutorial from BabelJS](http://babeljs.io/docs/learn-es2015/)
  - [Exploring ES6: Upgrade to the next version of JavaScript by Dr. Axel Rauschmayer](http://exploringjs.com/)
   
-Read [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) - it is important to know, what is good and what is not, and why. Likely later we will update eslint rules to match this requirements.
+Read [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) - it is important to know, what is good and what is not, and why.
 
 At least briefly read [webpack documentation](http://webpack.github.io/docs/) it is crucial to understand how it works in general. 
 
@@ -53,6 +53,15 @@ At least briefly read [webpack documentation](http://webpack.github.io/docs/) it
         ├── index.js       # app entry module
         ├── index.scss     # 
         └── index.test.js  # entry point for test karma
+
+### Styleguide
+
+Except my notes below(which can be incomplete and outdated), I highly encourage you to check out:
+
+- [Angular Style Guide, by John Papa](https://github.com/johnpapa/angular-styleguide)
+- [Angular 1.x styleguide, by Todd Motto](https://github.com/toddmotto/angular-styleguide)
+
+---
 
 ### Angular specific conventions
 
