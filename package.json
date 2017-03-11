@@ -9,7 +9,7 @@
   "scripts": {
     "build": "webpack --config webpack-production.config.js --progress --profile --colors",
     "build-dev": "webpack --config webpack.config.js --progress --profile --colors",
-    "dev-server": "webpack-dev-server --config webpack-dev-server.config.js --progress --colors --port 2992 --inline --content-base public",
+    "dev": "webpack-dev-server --config webpack-dev-server.config.js --progress --colors --port 2992 --inline --content-base public",
     "test": "karma start",
     "cover": "rimraf coverage && COVERAGE=1 karma start",
     "lint": "eslint ./src/"

@@ -66,7 +66,7 @@ module.exports = function (options) {
     loader: 'css-loader',
     options: {
       sourceMap: true,
-    }
+    },
   };
   let stylesheetLoaders = [
     {
