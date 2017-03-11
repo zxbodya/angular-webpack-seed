@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 
 module.exports = function (options) {
@@ -120,9 +119,6 @@ module.exports = function (options) {
 
   if (options.minimize) {
     plugins.push(
-      new NgAnnotatePlugin({
-        add: true,
-      }),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false,
@@ -145,7 +141,7 @@ module.exports = function (options) {
       {
         test: /\.test\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loaders: ['ng-annotate', 'babel'],
       },
       // transpile and instrument only testing sources with babel-istanbul
       {
@@ -154,17 +150,14 @@ module.exports = function (options) {
           /node_modules/,
           /\.test\./,
         ],
-        loader: 'babel-istanbul',
-        query: {
-          // cacheDirectory: true
-        },
+        loaders: ['ng-annotate', 'babel-istanbul'],
       },
     ];
   } else {
     jsLoaders = [
       {
         test: /\.jsx?$/,
-        loader: 'babel',
+        loaders: ['ng-annotate', 'babel'],
         exclude: /node_modules/,
       },
     ];
