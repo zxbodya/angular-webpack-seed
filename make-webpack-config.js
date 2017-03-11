@@ -42,11 +42,18 @@ module.exports = function (options) {
     },
   ];
   let stylesheetLoaders = [
-    { test: /\.css$/, loaders: ['css-loader!postcss-loader'] },
-    { test: /\.less$/, loaders: ['css-loader!postcss-loader!less-loader'] },
-    { test: /\.styl$/, loaders: ['css-loader!postcss-loader!stylus-loader'] },
-    { test: /\.scss$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap'] },
-    { test: /\.sass$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap&indentedSyntax'] },
+    { test: /\.css$/, loaders: ['css-loader?sourceMap!postcss-loader'] },
+    {
+      test: /\.scss$/,
+      loaders: ['css-loader?sourceMap!postcss-loader!sass-loader?outputStyle=expanded&sourceMap&sourceMapContents'],
+    },
+    {
+      test: /\.sass$/,
+      loaders: [
+        'css-loader?sourceMap!postcss-loader!'
+        + 'sass-loader?outputStyle=expanded&sourceMap&sourceMapContents&indentedSyntax',
+      ],
+    },
   ];
 
   const alias = {};
@@ -69,7 +76,7 @@ module.exports = function (options) {
     pathinfo: options.debug,
   };
   const excludeFromStats = [
-    /node_modules[\\\/]angular[\\\/]/,
+    /node_modules[\\/]angular[\\/]/,
   ];
   const plugins = [
     function statsPlugin() {
