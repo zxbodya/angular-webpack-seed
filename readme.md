@@ -8,10 +8,11 @@ It is quite opinionated, so feel free - to make suggestions to improve it.
 
 Includes following:
 
- - [webpack](http://webpack.github.io) (modules, assets bundling)
+ - [Webpack 2](https://webpack.js.org/) (modules, assets bundling)
  - [babel](http://babeljs.io/) (ES2015 support)
  - [ng-annotate](https://github.com/olov/ng-annotate)
- - karma test runner configuration
+ - karma test runner configuration with code coverage reports
+ - [node-sass](https://github.com/sass/node-sass) for styles + AutoPrefixer 
 
 
 Requirements:
@@ -27,6 +28,7 @@ Requirements:
 4. Run unit tests `yarn run test`
 5. Create build for deployment `yarn run build` for production build, or `yarn run build-dev` for development build
 
+To analyze your bundle size - I recommend using [Webpack Bundle Analyzer](https://github.com/th0r/webpack-bundle-analyzer)
 ---
 
 ## Getting started

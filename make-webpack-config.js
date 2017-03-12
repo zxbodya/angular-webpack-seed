@@ -82,6 +82,8 @@ module.exports = function (options) {
           loader: 'sass-loader',
           options: {
             sourceMap: true,
+            outputStyle: 'expanded',
+            sourceMapContents: true,
           },
         },
       ],
@@ -96,6 +98,8 @@ module.exports = function (options) {
           options: {
             sourceMap: true,
             indentedSyntax: true,
+            outputStyle: 'expanded',
+            sourceMapContents: true,
           },
         },
       ],
