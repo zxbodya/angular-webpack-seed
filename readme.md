@@ -29,6 +29,7 @@ Requirements:
 5. Create build for deployment `yarn run build` for production build, or `yarn run build-dev` for development build
 
 To analyze your bundle size - I recommend using [Webpack Bundle Analyzer](https://github.com/th0r/webpack-bundle-analyzer)
+
 ---
 
 ## Getting started
