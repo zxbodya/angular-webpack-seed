@@ -4,7 +4,7 @@ const makeWebpackConfig = require('./make-webpack-config');
 
 module.exports = function (config) {
   const webpackConfig = makeWebpackConfig({
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     separateStylesheet: true,
     debug: true,
     cover: process.env.COVERAGE,
