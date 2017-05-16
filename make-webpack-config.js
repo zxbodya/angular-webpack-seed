@@ -89,6 +89,19 @@ module.exports = function (options) {
       ],
     },
     {
+      test: /\.less$/,
+      use: [
+        cssLoader,
+        postCssLoader,
+        {
+          loader: 'less-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
+      ],
+    },
+    {
       test: /\.sass$/,
       use: [
         cssLoader,

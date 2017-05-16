@@ -1,4 +1,4 @@
-import './welcome.scss';
+import './welcome.less';
 
 import WelcomeController from './WelcomeController';
 
