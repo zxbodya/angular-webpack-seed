@@ -61,6 +61,9 @@ module.exports = function (options) {
   ];
   const postCssLoader = {
     loader: 'postcss-loader',
+    options: {
+      sourceMap: true,
+    },
   };
   const cssLoader = {
     loader: 'css-loader',
