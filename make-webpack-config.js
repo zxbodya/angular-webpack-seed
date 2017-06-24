@@ -233,7 +233,7 @@ module.exports = function (options) {
           /node_modules/,
           /\.test\./,
         ],
-        use: ['ng-annotate-loader', 'babel-istanbul-loader'],
+        use: ['istanbul-instrumenter-loader', 'ng-annotate-loader', 'babel-loader'],
       },
     ];
   } else {

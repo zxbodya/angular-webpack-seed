@@ -42,28 +42,16 @@ module.exports = function (config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: process.env.COVERAGE
-      ? ['progress', 'coverage']
+      ? ['progress', 'coverage-istanbul']
       : ['progress'],
 
-
-    // coverageReporter: {
-    //   type: 'text',
-    //   dir: 'coverage/',
-    // },
-    coverageReporter: {
-      reporters: [
-        {
-          type: 'text-summary',
-        },
-        {
-          type: 'lcov',
-          dir: 'coverage/',
-        },
-        {
-          type: 'json',
-          dir: 'coverage/',
-        },
+    coverageIstanbulReporter: {
+      reports: [
+        'text-summary',
+        'lcov',
+        'json',
       ],
+      fixWebpackSourcePaths: true,
     },
 
     // web server port
@@ -108,7 +96,7 @@ module.exports = function (config) {
       require('karma-webpack'),
     ].concat(
       process.env.COVERAGE
-        ? [require('karma-coverage')]
+        ? [require('karma-coverage-istanbul-reporter')]
         : []
     ),
   });
