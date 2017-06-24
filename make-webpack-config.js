@@ -139,6 +139,7 @@ module.exports = function (options) {
     /node_modules[\\/]angular[\\/]/,
   ];
   const plugins = [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     function statsPlugin() {
       this.plugin('done', (stats) => {
         const jsonStats = stats.toJson({
