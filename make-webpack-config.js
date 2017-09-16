@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function (options) {
   const entry = {
-    main: './src/index',
+    main: './src/index.js',
   };
 
   const defaultLoaders = [
@@ -136,7 +136,7 @@ module.exports = function (options) {
     pathinfo: options.debug,
   };
   const excludeFromStats = [
-    /node_modules[\\/]angular[\\/]/,
+    // /node_modules[\\/]angular[\\/]/,
   ];
   const plugins = [
     new webpack.optimize.ModuleConcatenationPlugin(),
@@ -147,6 +147,9 @@ module.exports = function (options) {
           exclude: excludeFromStats,
         });
         jsonStats.publicPath = publicPath;
+        if (!fs.existsSync(path.join(__dirname, '..', 'build'))) {
+          fs.mkdirSync(path.join(__dirname, '..', 'build'));
+        }
         if (!options.prerender) {
           fs.writeFileSync(path.join(__dirname, 'build', 'stats.json'), JSON.stringify(jsonStats));
         } else {
@@ -160,12 +163,10 @@ module.exports = function (options) {
   const externals = [];
 
   if (options.commonsChunk && !options.cover) {
-    plugins.push(
-      new webpack.optimize.CommonsChunkPlugin(
-        'commons',
-        `commons.js${(options.longTermCaching ? '?[chunkhash]' : '')}`
-      )
-    );
+    plugins.push(new webpack.optimize.CommonsChunkPlugin(
+      'commons',
+      `commons.js${(options.longTermCaching ? '?[chunkhash]' : '')}`
+    ));
   }
 
 
@@ -187,11 +188,9 @@ module.exports = function (options) {
   });
 
   if (options.separateStylesheet) {
-    plugins.push(
-      new ExtractTextPlugin({
-        filename: `[name].css${options.longTermCaching ? '?[contenthash]' : ''}`,
-      })
-    );
+    plugins.push(new ExtractTextPlugin({
+      filename: `[name].css${options.longTermCaching ? '?[contenthash]' : ''}`,
+    }));
   }
   const definitions = {
     'process.env.NODE_ENV': options.debug ? JSON.stringify('development') : JSON.stringify('production'),
@@ -212,9 +211,7 @@ module.exports = function (options) {
       new webpack.NoEmitOnErrorsPlugin()
     );
   }
-  plugins.push(
-    new webpack.DefinePlugin(definitions)
-  );
+  plugins.push(new webpack.DefinePlugin(definitions));
 
   let jsRules;
 
@@ -224,7 +221,7 @@ module.exports = function (options) {
       {
         test: /\.test\.jsx?$/,
         exclude: /node_modules/,
-        use: ['ng-annotate-loader', 'babel-loader'],
+        use: ['babel-loader'],
       },
       // transpile and instrument only testing sources with babel-istanbul
       {
@@ -233,14 +230,24 @@ module.exports = function (options) {
           /node_modules/,
           /\.test\./,
         ],
-        use: ['istanbul-instrumenter-loader', 'ng-annotate-loader', 'babel-loader'],
+        use: ['istanbul-instrumenter-loader', {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              'es2015',
+            ],
+            plugins: [
+              'angularjs-annotate',
+            ],
+          },
+        }],
       },
     ];
   } else {
     jsRules = [
       {
         test: /\.jsx?$/,
-        use: ['ng-annotate-loader', 'babel-loader'],
+        use: ['babel-loader'],
         exclude: /node_modules/,
       },
     ];

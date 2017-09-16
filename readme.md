@@ -8,9 +8,9 @@ It is quite opinionated, so feel free - to make suggestions to improve it.
 
 Includes following:
 
- - [Webpack 2](https://webpack.js.org/) (modules, assets bundling)
+ - [Webpack](https://webpack.js.org/) (modules, assets bundling)
  - [babel](http://babeljs.io/) (ES2015 support)
- - [ng-annotate](https://github.com/olov/ng-annotate)
+ - [babel-plugin-angularjs-annotate](https://github.com/schmod/babel-plugin-angularjs-annotate)
  - karma test runner configuration with code coverage reports
  - [node-sass](https://github.com/sass/node-sass) for styles + AutoPrefixer 
 

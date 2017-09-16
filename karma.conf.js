@@ -94,10 +94,8 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-sourcemap-loader'),
       require('karma-webpack'),
-    ].concat(
-      process.env.COVERAGE
-        ? [require('karma-coverage-istanbul-reporter')]
-        : []
-    ),
+    ].concat(process.env.COVERAGE
+      ? [require('karma-coverage-istanbul-reporter')]
+      : []),
   });
 };
