@@ -139,7 +139,6 @@ module.exports = function (options) {
     // /node_modules[\\/]angular[\\/]/,
   ];
   const plugins = [
-    new webpack.optimize.ModuleConcatenationPlugin(),
     function statsPlugin() {
       this.plugin('done', (stats) => {
         const jsonStats = stats.toJson({
@@ -198,6 +197,7 @@ module.exports = function (options) {
 
   if (options.minimize) {
     plugins.push(
+      new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
       }),
