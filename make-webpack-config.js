@@ -138,25 +138,30 @@ module.exports = function (options) {
   const excludeFromStats = [
     // /node_modules[\\/]angular[\\/]/,
   ];
-  const plugins = [
-    function statsPlugin() {
-      this.plugin('done', (stats) => {
-        const jsonStats = stats.toJson({
-          chunkModules: true,
-          exclude: excludeFromStats,
-        });
-        jsonStats.publicPath = publicPath;
-        if (!fs.existsSync(path.join(__dirname, '..', 'build'))) {
-          fs.mkdirSync(path.join(__dirname, '..', 'build'));
-        }
-        if (!options.prerender) {
-          fs.writeFileSync(path.join(__dirname, 'build', 'stats.json'), JSON.stringify(jsonStats));
-        } else {
-          fs.writeFileSync(path.join(__dirname, 'build', 'server', 'stats.json'), JSON.stringify(jsonStats));
-        }
+
+  function statsPlugin() {
+    this.plugin('done', (stats) => {
+      const jsonStats = stats.toJson({
+        chunkModules: true,
+        exclude: excludeFromStats,
       });
-    },
-  ];
+      jsonStats.publicPath = publicPath;
+      if (!fs.existsSync(path.join(__dirname, '..', 'build'))) {
+        fs.mkdirSync(path.join(__dirname, '..', 'build'));
+      }
+      if (!options.prerender) {
+        fs.writeFileSync(path.join(__dirname, 'build', 'stats.json'), JSON.stringify(jsonStats));
+      } else {
+        fs.writeFileSync(path.join(__dirname, 'build', 'server', 'stats.json'), JSON.stringify(jsonStats));
+      }
+    });
+  }
+
+  const plugins = [];
+
+  if (!options.devServer) {
+    plugins.push(statsPlugin);
+  }
 
   const alias = {};
   const externals = [];
