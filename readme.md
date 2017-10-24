@@ -22,7 +22,7 @@ Requirements:
 
 ### Usage
 
-1. Install dependencies `yarn i`
+1. Install dependencies `yarn install`
 2. Start dev server `yarn run dev` open [http://localhost:2992](http://localhost:2992)
 3. Lint your code `yarn run lint`
 4. Run unit tests `yarn run test`
