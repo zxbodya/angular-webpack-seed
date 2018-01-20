@@ -9,7 +9,7 @@ It is quite opinionated, so feel free - to make suggestions to improve it.
 Includes following:
 
  - [Webpack](https://webpack.js.org/) (modules, assets bundling)
- - [babel](http://babeljs.io/) (ES2015 support)
+ - [babel](http://babeljs.io/) (modern javascript features)
  - [babel-plugin-angularjs-annotate](https://github.com/schmod/babel-plugin-angularjs-annotate)
  - karma test runner configuration with code coverage reports
  - [node-sass](https://github.com/sass/node-sass) for styles + AutoPrefixer 
@@ -17,7 +17,7 @@ Includes following:
 
 Requirements:
  
-- NodeJS 6+ is required.
+- NodeJS 8+ is required.
 - [Yarn](https://yarnpkg.com) is optional to use, but I recommend using it. (if no - npm is ok).  
 
 ### Usage

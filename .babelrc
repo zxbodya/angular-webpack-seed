@@ -1,7 +1,7 @@
 {
   "presets": [
     [
-      "es2015",
+      "env",
       {
         "modules": false
       }
@@ -9,6 +9,8 @@
   ],
   "plugins": [
     "transform-runtime",
+    "transform-class-properties",
+    "transform-object-rest-spread",
     "angularjs-annotate"
   ]
 }

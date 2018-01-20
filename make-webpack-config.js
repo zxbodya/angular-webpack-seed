@@ -239,7 +239,7 @@ module.exports = function (options) {
           loader: 'babel-loader',
           options: {
             presets: [
-              'es2015',
+              'env',
             ],
             plugins: [
               'angularjs-annotate',
