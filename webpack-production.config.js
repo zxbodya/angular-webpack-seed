@@ -4,8 +4,8 @@ const config = makeWebpackConfig({
   // commonsChunk: true,
   longTermCaching: true,
   separateStylesheet: true,
-  minimize: true,
   devtool: false,
+  mode: 'production',
 });
 
 module.exports = config;
