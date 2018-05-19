@@ -166,14 +166,6 @@ module.exports = function makeWebpackConfig(options) {
   const alias = {};
   const externals = [];
 
-  if (options.commonsChunk && !options.cover) {
-    plugins.push(new webpack.optimize.CommonsChunkPlugin(
-      'commons',
-      `commons.js${(options.longTermCaching ? '?[chunkhash]' : '')}`
-    ));
-  }
-
-
   stylesheetLoaders = stylesheetLoaders.map((loaderIn) => {
     const loader = Object.assign({}, loaderIn);
     delete loader.use;
