@@ -140,7 +140,7 @@ module.exports = function makeWebpackConfig(options) {
   ];
 
   function statsPlugin() {
-    this.plugin('done', (stats) => {
+    this.hooks.done.tap('statsPlugin', (stats) => {
       const jsonStats = stats.toJson({
         chunkModules: true,
         exclude: excludeFromStats,
