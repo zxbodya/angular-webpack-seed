@@ -211,7 +211,11 @@ module.exports = function makeWebpackConfig(options) {
           /node_modules/,
           /\.test\./,
         ],
-        use: ['istanbul-instrumenter-loader', {
+        use: [{
+          loader: 'istanbul-instrumenter-loader',
+          options: { esModules: true },
+        },
+        {
           loader: 'babel-loader',
           options: {
             presets: [
