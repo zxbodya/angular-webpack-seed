@@ -7,6 +7,7 @@ module.exports = function (config) {
     devtool: 'inline-source-map',
     separateStylesheet: true,
     debug: true,
+    isServer: true, // to not create css file, todo: likely to be fixed with karma-webpack 4.0
     cover: process.env.COVERAGE,
   });
 

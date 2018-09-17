@@ -200,13 +200,13 @@ module.exports = function makeWebpackConfig(options) {
     jsRules = [
       // transpile all files except testing sources with babel as usual
       {
-        test: /\.test\.jsx?$/,
+        test: /\.test\.[tj]sx?$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
       // transpile and instrument only testing sources with babel-istanbul
       {
-        test: /\.jsx?$/,
+        test: /\.[jt]sx?$/,
         exclude: [
           /node_modules/,
           /\.test\./,
@@ -215,7 +215,8 @@ module.exports = function makeWebpackConfig(options) {
           loader: 'babel-loader',
           options: {
             presets: [
-              'env',
+              '@babel/preset-env',
+              '@babel/preset-typescript',
             ],
             plugins: [
               'angularjs-annotate',
@@ -227,7 +228,7 @@ module.exports = function makeWebpackConfig(options) {
   } else {
     jsRules = [
       {
-        test: /\.jsx?$/,
+        test: /\.[jt]sx?$/,
         use: ['babel-loader'],
         exclude: /node_modules/,
       },
@@ -251,7 +252,7 @@ module.exports = function makeWebpackConfig(options) {
       modules: [
         'node_modules',
       ],
-      extensions: ['.web.js', '.js', '.jsx'],
+      extensions: ['.web.js', '.js', '.jsx', '.ts', '.tsx'],
       mainFields: ['browser', 'module', 'jsnext:main', 'main'],
       alias,
     },

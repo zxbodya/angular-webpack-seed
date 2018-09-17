@@ -1,16 +1,18 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
         "modules": false
-      }
+      },
+      "@babel/preset-typescript"
     ]
   ],
   "plugins": [
-    "transform-runtime",
-    "transform-class-properties",
-    "transform-object-rest-spread",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-syntax-dynamic-import",
     "angularjs-annotate"
   ]
 }

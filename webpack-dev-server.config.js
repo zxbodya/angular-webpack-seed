@@ -8,7 +8,7 @@ const config = makeWebpackConfig({
 
 config.serve = {
   content: 'public',
-  dev: {
+  devMiddleware: {
     compress: false,
     watchOptions: {
       aggregateTimeout: 300,

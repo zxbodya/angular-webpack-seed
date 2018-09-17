@@ -10,4 +10,3 @@ angular.module('main', [
 ]);
 
 angular.bootstrap(document.documentElement, ['main']);
-

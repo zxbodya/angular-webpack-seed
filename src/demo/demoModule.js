@@ -5,4 +5,3 @@ export default angular
   .module('demo', [])
   .directive('demoWelcome', welcomeDirective)
   .name;
-
